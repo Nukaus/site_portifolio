@@ -28,4 +28,11 @@ body {
 
   #foto{
     border-radius: 50%;
+    box-shadow: 1px 1px 10px 3px rgb(177, 177, 177);
+    width: 200px;
+    height: 200px;
+  }
+
+  #apresentacao{
+    text-align: justify;
   }
