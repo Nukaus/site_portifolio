@@ -1,39 +1,219 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Inter:wght@300;400;600&display=swap');
+
+/* Variáveis de Identidade Visual */
+:root {
+    --cor-fundo: #1f1f1f; /* Quase preto */
+    --cor-fundo-claro: #2c2c2c; /* Fundo de seção/card */
+    --cor-destaque: #9d4edd; /* ROXO VIBRANTE */
+    --cor-texto: #e0e0e0; /* Cinza muito claro */
+    --cor-texto-secundario: #a0a0a0;
+
+    --font-titulo: 'Montserrat', sans-serif;
+    --font-corpo: 'Inter', sans-serif;
+}
+
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-  
-  header {
+    font-family: var(--font-corpo);
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+/* Estilos Globais do Bootstrap (Sobrescrevendo) */
+.bg-white, .bg-light {
+    background-color: var(--cor-fundo-claro) !important;
+}
+
+.text-dark {
+    color: var(--cor-texto) !important;
+}
+
+/* Header */
+header {
     position: sticky;
     top: 0;
     z-index: 1000;
-  }
-  
-  section {
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .card-title {
+    border-bottom: 2px solid var(--cor-destaque); /* Linha de destaque no header */
+}
+
+header h1 {
+    font-family: var(--font-titulo);
+    font-weight: 700;
+    color: var(--cor-destaque);
+}
+
+header nav a {
+    transition: color 0.3s;
     font-weight: 600;
-  }
-  
-  footer {
-    font-size: 0.9rem;
-  }
+}
 
-  #perfil{
-    display: flex;
-    max-width: 800px;
-    margin: auto;
-    padding: 10px;
-  }
+header nav a:hover {
+    color: var(--cor-destaque) !important;
+}
 
-  #foto{
+/* Seção Perfil (Hero) */
+#perfil {
+    background-color: var(--cor-fundo) !important; /* Certifica-se de que o Hero é o fundo principal */
+    min-height: 80vh; /* Ocupa a maior parte da tela */
+    display: flex; /* Mantido no pai para alinhar */
+}
+
+#foto {
     border-radius: 50%;
-    box-shadow: 1px 1px 10px 3px rgb(177, 177, 177);
-    width: 200px;
-    height: 200px;
-  }
+    /* Mudei a sombra para a cor de destaque */
+    box-shadow: 0 0 15px 5px var(--cor-destaque);
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border: 5px solid var(--cor-fundo-claro); /* Borda sólida */
+}
 
-  #apresentacao{
-    text-align: justify;
-  }
+#bio-content h2 {
+    font-family: var(--font-titulo);
+    font-size: 3rem; /* Aumenta o tamanho do título */
+    color: var(--cor-texto);
+}
+
+#apresentacao {
+    text-align: left !important; /* Sobrescreve o justify para melhor leitura em blocos */
+    margin-bottom: 20px;
+    color: var(--cor-texto-secundario);
+}
+
+#bio-content .text-muted {
+  /* Usamos a cor de texto principal ou a cor de destaque para alto contraste */
+  color: var(--cor-texto) !important; /* Branco ou Cinza Claro (alto contraste) */
+  font-size: 1.1em; /* Aumenta um pouco o tamanho para dar mais destaque */
+  padding: 10px 0;
+  border-top: 1px solid var(--cor-texto-secundario); /* Linha sutil para separar */
+  border-bottom: 1px solid var(--cor-texto-secundario);
+}
+
+/* Seção Projetos */
+#projetos h3 {
+    font-family: var(--font-titulo);
+    color: var(--cor-destaque);
+    margin-bottom: 40px !important;
+    text-transform: uppercase;
+}
+
+.card {
+    background-color: var(--cor-fundo-claro) !important;
+    border: 1px solid var(--cor-texto-secundario);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Estilo para as imagens dos projetos (mockups) */
+.card-img-top {
+  width: 100%;
+  height: 200px; /* Altura fixa para manter a uniformidade visual */
+  object-fit: cover; /* Garante que a imagem cubra a área sem distorção */
+  border-bottom: 2px solid var(--cor-destaque); /* Linha de destaque para separar do texto */
+}
+
+/* Estilo para as tags de tecnologia em cada projeto */
+.project-tags {
+  margin-top: 10px;
+  margin-bottom: 15px;
+  font-size: 0.85em;
+  color: var(--cor-texto-secundario);
+  font-weight: 600;
+}
+
+.project-tags span {
+  display: inline-block;
+  background-color: #3a3a3a; /* Fundo escuro para a tag */
+  color: var(--cor-destaque); /* Cor de destaque para o texto da tag */
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-right: 5px;
+  margin-bottom: 5px; /* Para quebra de linha em mobile */
+  border: 1px solid var(--cor-destaque); /* Borda da cor de destaque */
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efeito de elevação no hover */
+    box-shadow: 0 10px 20px rgba(157, 78, 221, 0.3); /* Sombra do destaque */
+}
+
+.card-title {
+    color: var(--cor-destaque);
+    font-weight: 700;
+}
+
+.card-text {
+    color: var(--cor-texto-secundario);
+}
+
+.btn-primary {
+    /* Estilizando o botão com o destaque */
+    background-color: var(--cor-destaque) !important;
+    border-color: var(--cor-destaque) !important;
+    color: var(--cor-fundo) !important; /* Texto escuro no botão de destaque */
+    font-weight: 700;
+    transition: background-color 0.3s;
+}
+
+/* Estilizando o Botão Secundário (Ver Código) */
+.btn-secondary {
+  /* Cor de fundo para o botão secundário - Neutro Escuro */
+  background-color: var(--cor-fundo-claro) !important; 
+  /* Cor da borda com o seu destaque */
+  border-color: var(--cor-destaque) !important; 
+  /* Texto na cor de destaque */
+  color: var(--cor-destaque) !important; 
+  font-weight: 700;
+  transition: all 0.3s;
+}
+
+.btn-secondary:hover {
+  /* Efeito sutil no hover */
+  background-color: var(--cor-destaque) !important;
+  color: var(--cor-fundo) !important; /* Inverte a cor para o fundo no hover */
+  border-color: var(--cor-destaque) !important;
+}
+
+/* Garante que os botões tenham espaço após o texto do card */
+.card-body > .d-flex {
+  margin-top: auto; /* Empurra os botões para baixo se o texto for curto */
+  padding-top: 15px;
+  border-top: 1px solid #3a3a3a; /* Linha de separação suave */
+}
+
+.btn-primary:hover {
+    filter: brightness(0.9);
+}
+
+/* Seção Contato */
+#contato {
+    background-color: var(--cor-fundo) !important;
+}
+
+#contato h3 {
+    font-family: var(--font-titulo);
+    color: var(--cor-destaque);
+}
+
+#contato a {
+    color: var(--cor-destaque);
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    background-color: black !important;
+    border-top: 1px solid var(--cor-fundo-claro);
+    color: var(--cor-texto-secundario) !important;
+    font-size: 0.9rem;
+}
+
+/* Limpeza de classes antigas */
+#perfil{
+    /* Removido o display:flex antigo para usar o flex do Bootstrap */
+    max-width: none;
+    margin: 0;
+    padding: 10px;
+}
+
+#apresentacao{
+    /* Removido o text-align: justify para usar o left */
+}
